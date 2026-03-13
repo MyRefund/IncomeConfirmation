@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Refund – Income Confirmation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+font-family:Poppins, Arial, sans-serif;
+background:#ECFDF5;
+margin:0;
+padding:0;
+color:#094B35;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+padding:30px 20px 60px 20px;
+}
+
+.logo{
+text-align:center;
+margin-bottom:25px;
+}
+
+.logo img{
+max-width:150px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+h1{
+font-size:24px;
+margin-bottom:10px;
+}
+
+p{
+line-height:1.6;
+}
+
+.section{
+margin-top:25px;
+}
+
+.field{
+margin-bottom:15px;
+}
+
+.field label{
+display:block;
+font-weight:500;
+margin-bottom:5px;
+}
+
+.field input{
+width:100%;
+padding:10px;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:14px;
+}
+
+.placeholder-box{
+border:2px dashed #BBF7D0;
+background:#ECFDF5;
+padding:30px;
+text-align:center;
+border-radius:8px;
+margin-top:10px;
+}
+
+.button{
+background:#03953F;
+color:white;
+border:none;
+padding:14px 22px;
+border-radius:6px;
+font-size:15px;
+cursor:pointer;
+margin-top:20px;
+}
+
+.button:hover{
+background:#028a39;
+}
+
+.hidden{
+display:none;
+}
+
+.checkbox-group{
+margin-top:10px;
+}
+
+.checkbox-group label{
+display:block;
+margin-bottom:8px;
+}
+
+.declaration{
+background:#ECFDF5;
+padding:20px;
+border-radius:8px;
+margin-top:20px;
+}
+
+.footer{
+margin-top:30px;
+font-size:13px;
+text-align:center;
+color:#666;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">
+<img src="https://via.placeholder.com/150x50?text=My+Refund+Logo">
+</div>
+
+<!-- STEP 1 -->
+
+<div class="card" id="step1">
+
+<h1>Confirm Your Income Details</h1>
+
+<p>
+Before we complete your tax return, please review your income information below and confirm everything is correct.
+</p>
+
+<div class="section">
+
+<h3>Your Details</h3>
+
+<div class="field">
+<label>Full Name</label>
+<input type="text" placeholder="Client Name">
+</div>
+
+<div class="field">
+<label>Email</label>
+<input type="email" placeholder="Client Email">
+</div>
+
+<div class="field">
+<label>Phone</label>
+<input type="text" placeholder="Phone Number">
+</div>
+
+<div class="field">
+<label>Address</label>
+<input type="text" placeholder="Home Address">
+</div>
+
+<div class="field">
+<label>Bank Account</label>
+<input type="text" placeholder="Bank Account for Refund">
+</div>
+
+</div>
+
+<div class="section">
+
+<h3>Your IRD Income Information</h3>
+
+<p>Please review the income information we received from IRD.</p>
+
+<div class="placeholder-box">
+IRD Income PDF Preview<br><br>
+(PDF will appear here)
+</div>
+
+</div>
+
+<button class="button" onclick="nextStep()">Next</button>
+
+</div>
+
+
+<!-- STEP 2 -->
+
+<div class="card hidden" id="step2">
+
+<h1>Other Income</h1>
+
+<p>
+Please tell us if you received any other income that may not appear in the IRD report.
+</p>
+
+<div class="checkbox-group">
+
+<label><input type="checkbox"> Self-employed income</label>
+
+<label><input type="checkbox"> Cash jobs or side work</label>
+
+<label><input type="checkbox"> Overseas income</label>
+
+<label><input type="checkbox"> Rental income</label>
+
+<label><input type="checkbox"> Interest or investments</label>
+
+<label><input type="checkbox"> Other income (placeholder)</label>
+
+</div>
+
+<div class="placeholder-box">
+Additional income details form<br><br>
+(Placeholder)
+</div>
+
+<button class="button" onclick="nextStep2()">Next</button>
+
+</div>
+
+
+<!-- STEP 3 -->
+
+<div class="card hidden" id="step3">
+
+<h1>Declaration</h1>
+
+<p>
+Please confirm the information provided is correct.
+</p>
+
+<div class="declaration">
+
+<label>
+
+<input type="checkbox">
+
+I confirm the information provided is correct and complete to the best of my knowledge. I understand My Refund will use this information to prepare my tax return.
+
+</label>
+
+</div>
+
+<div class="placeholder-box">
+Digital signature / declaration system<br><br>
+(Placeholder)
+</div>
+
+<button class="button">Submit Confirmation</button>
+
+</div>
+
+<div class="footer">
+My Refund
+</div>
+
+</div>
+
+<script>
+
+function nextStep(){
+document.getElementById("step1").classList.add("hidden");
+document.getElementById("step2").classList.remove("hidden");
+}
+
+function nextStep2(){
+document.getElementById("step2").classList.add("hidden");
+document.getElementById("step3").classList.remove("hidden");
+}
+
+</script>
+
+</body>
+</html>
