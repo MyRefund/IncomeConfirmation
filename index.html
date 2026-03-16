@@ -19,9 +19,9 @@ color:#094B35;
 }
 
 .container{
-max-width:700px;
+max-width:720px;
 margin:auto;
-padding:30px 20px 60px 20px;
+padding:30px 20px 60px;
 }
 
 .logo{
@@ -30,19 +30,57 @@ margin-bottom:25px;
 }
 
 .logo img{
-max-width:150px;
+max-width:170px;
+height:auto;
+}
+
+/* progress bar */
+
+.progress{
+display:flex;
+justify-content:space-between;
+margin-bottom:30px;
+}
+
+.step{
+flex:1;
+text-align:center;
+font-size:13px;
+color:#999;
+position:relative;
+}
+
+.step:before{
+content:"";
+display:block;
+width:26px;
+height:26px;
+border-radius:50%;
+margin:auto;
+margin-bottom:6px;
+background:#ddd;
+}
+
+.step.active{
+color:#03953F;
+font-weight:500;
+}
+
+.step.active:before{
+background:#03953F;
 }
 
 .card{
 background:white;
-padding:25px;
-border-radius:10px;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
+padding:30px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+transition:all .3s ease;
 }
 
 h1{
+margin-top:0;
 font-size:24px;
-margin-bottom:10px;
 }
 
 p{
@@ -54,75 +92,79 @@ margin-top:25px;
 }
 
 .field{
-margin-bottom:15px;
+margin-bottom:16px;
 }
 
 .field label{
 display:block;
 font-weight:500;
-margin-bottom:5px;
+margin-bottom:6px;
 }
 
 .field input{
 width:100%;
-padding:10px;
+padding:11px;
 border-radius:6px;
 border:1px solid #ccc;
 font-size:14px;
 }
 
-.placeholder-box{
+.pdf-viewer{
 border:2px dashed #BBF7D0;
 background:#ECFDF5;
 padding:30px;
 text-align:center;
 border-radius:8px;
-margin-top:10px;
+margin-top:12px;
+}
+
+iframe{
+width:100%;
+height:400px;
+border:none;
+border-radius:8px;
+}
+
+.checkbox-group label{
+display:block;
+margin-bottom:10px;
 }
 
 .button{
 background:#03953F;
 color:white;
 border:none;
-padding:14px 22px;
-border-radius:6px;
+padding:14px 26px;
+border-radius:7px;
 font-size:15px;
 cursor:pointer;
-margin-top:20px;
+margin-top:25px;
 }
 
 .button:hover{
 background:#028a39;
 }
 
+.declaration{
+background:#ECFDF5;
+padding:20px;
+border-radius:10px;
+margin-top:20px;
+}
+
 .hidden{
 display:none;
 }
 
-.checkbox-group{
-margin-top:10px;
-}
-
-.checkbox-group label{
-display:block;
-margin-bottom:8px;
-}
-
-.declaration{
-background:#ECFDF5;
-padding:20px;
-border-radius:8px;
-margin-top:20px;
-}
-
 .footer{
-margin-top:30px;
+margin-top:35px;
 font-size:13px;
 text-align:center;
-color:#666;
+color:#777;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -130,8 +172,17 @@ color:#666;
 <div class="container">
 
 <div class="logo">
-<img src="https://via.placeholder.com/150x50?text=My+Refund+Logo">
+<img src="01-My Refund-Logo_Main.png" alt="My Refund Logo">
 </div>
+
+<div class="progress">
+
+<div class="step active" id="progress1">Details</div>
+<div class="step" id="progress2">Other Income</div>
+<div class="step" id="progress3">Declaration</div>
+
+</div>
+
 
 <!-- STEP 1 -->
 
@@ -140,7 +191,7 @@ color:#666;
 <h1>Confirm Your Income Details</h1>
 
 <p>
-Before we complete your tax return, please review your income information below and confirm everything is correct.
+Before we complete your tax return, please review the information below and confirm everything is correct.
 </p>
 
 <div class="section">
@@ -149,27 +200,27 @@ Before we complete your tax return, please review your income information below 
 
 <div class="field">
 <label>Full Name</label>
-<input type="text" placeholder="Client Name">
+<input type="text" placeholder="Client name">
 </div>
 
 <div class="field">
 <label>Email</label>
-<input type="email" placeholder="Client Email">
+<input type="email" placeholder="Client email">
 </div>
 
 <div class="field">
 <label>Phone</label>
-<input type="text" placeholder="Phone Number">
+<input type="text" placeholder="Phone number">
 </div>
 
 <div class="field">
 <label>Address</label>
-<input type="text" placeholder="Home Address">
+<input type="text" placeholder="Home address">
 </div>
 
 <div class="field">
 <label>Bank Account</label>
-<input type="text" placeholder="Bank Account for Refund">
+<input type="text" placeholder="Refund bank account">
 </div>
 
 </div>
@@ -180,9 +231,15 @@ Before we complete your tax return, please review your income information below 
 
 <p>Please review the income information we received from IRD.</p>
 
-<div class="placeholder-box">
-IRD Income PDF Preview<br><br>
-(PDF will appear here)
+<div class="pdf-viewer">
+
+<!-- Placeholder PDF -->
+PDF preview will appear here
+
+<br><br>
+
+<iframe src=""></iframe>
+
 </div>
 
 </div>
@@ -199,28 +256,24 @@ IRD Income PDF Preview<br><br>
 <h1>Other Income</h1>
 
 <p>
-Please tell us if you received any other income that may not appear in the IRD report.
+Please tell us if you received any income that may not appear in the IRD report.
 </p>
 
 <div class="checkbox-group">
 
 <label><input type="checkbox"> Self-employed income</label>
-
 <label><input type="checkbox"> Cash jobs or side work</label>
-
 <label><input type="checkbox"> Overseas income</label>
-
 <label><input type="checkbox"> Rental income</label>
-
-<label><input type="checkbox"> Interest or investments</label>
-
+<label><input type="checkbox"> Investment or interest income</label>
 <label><input type="checkbox"> Other income (placeholder)</label>
 
 </div>
 
-<div class="placeholder-box">
-Additional income details form<br><br>
-(Placeholder)
+<div class="pdf-viewer">
+
+Additional income details form placeholder
+
 </div>
 
 <button class="button" onclick="nextStep2()">Next</button>
@@ -250,9 +303,10 @@ I confirm the information provided is correct and complete to the best of my kno
 
 </div>
 
-<div class="placeholder-box">
-Digital signature / declaration system<br><br>
-(Placeholder)
+<div class="pdf-viewer">
+
+Digital signature placeholder
+
 </div>
 
 <button class="button">Submit Confirmation</button>
@@ -260,7 +314,9 @@ Digital signature / declaration system<br><br>
 </div>
 
 <div class="footer">
+
 My Refund
+
 </div>
 
 </div>
@@ -268,13 +324,23 @@ My Refund
 <script>
 
 function nextStep(){
+
 document.getElementById("step1").classList.add("hidden");
 document.getElementById("step2").classList.remove("hidden");
+
+document.getElementById("progress1").classList.remove("active");
+document.getElementById("progress2").classList.add("active");
+
 }
 
 function nextStep2(){
+
 document.getElementById("step2").classList.add("hidden");
 document.getElementById("step3").classList.remove("hidden");
+
+document.getElementById("progress2").classList.remove("active");
+document.getElementById("progress3").classList.add("active");
+
 }
 
 </script>
