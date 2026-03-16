@@ -1,489 +1,779 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Refund – Income Confirmation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root{
+      --green-dark:#0B4B3A;
+      --green:#03953F;
+      --green-light:#ECFDF5;
+      --green-soft:#BBF7D0;
+      --bg:#f4f4f4;
+      --hero:#efefef;
+      --text:#0B4B3A;
+      --border:#d9d9d9;
+      --white:#ffffff;
+      --muted:#5d6b63;
+      --grey-btn:#e5e7eb;
+    }
 
-<title>My Refund – Income Confirmation</title>
+    *{
+      box-sizing:border-box;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    body{
+      margin:0;
+      font-family:Poppins,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
 
-<style>
+    .header{
+      background:var(--green-dark);
+      padding:18px 40px;
+      display:flex;
+      align-items:center;
+    }
 
-body{
-font-family:Poppins,sans-serif;
-margin:0;
-background:#f4f4f4;
-color:#0B4B3A;
-}
+    .logo img{
+      height:28px;
+      width:auto;
+      display:block;
+    }
 
-/* HEADER */
+    .hero{
+      background:var(--hero);
+      padding:56px 20px;
+    }
 
-.header{
-background:#0B4B3A;
-padding:18px 40px;
-display:flex;
-align-items:center;
-}
+    .hero-inner{
+      max-width:960px;
+      margin:0 auto;
+    }
 
-.logo img{
-height:28px;
-}
+    .hero h1{
+      margin:0 0 10px;
+      font-size:40px;
+      line-height:1.1;
+      font-weight:600;
+    }
 
-/* HERO */
+    .hero p{
+      margin:0 0 8px;
+      font-size:17px;
+      color:var(--muted);
+    }
 
-.hero{
-background:#efefef;
-padding:60px 20px;
-}
+    .section{
+      max-width:960px;
+      margin:0 auto;
+      padding:48px 20px 64px;
+    }
 
-.hero-inner{
-max-width:900px;
-margin:auto;
-}
+    .hidden{
+      display:none;
+    }
 
-.hero h1{
-font-size:36px;
-margin-bottom:10px;
-}
+    h2{
+      font-size:30px;
+      margin:0 0 18px;
+      font-weight:600;
+    }
 
-/* CONTENT */
+    h3{
+      font-size:20px;
+      margin:30px 0 14px;
+      font-weight:600;
+    }
 
-.section{
-max-width:900px;
-margin:auto;
-padding:60px 20px;
-}
+    p{
+      line-height:1.65;
+    }
 
-.field{
-margin-bottom:18px;
-}
+    .field{
+      margin-bottom:18px;
+    }
 
-.field label{
-display:block;
-font-weight:500;
-margin-bottom:6px;
-}
+    .field label{
+      display:block;
+      font-size:14px;
+      font-weight:600;
+      margin-bottom:7px;
+    }
 
-.field input, select{
-width:100%;
-padding:12px;
-border-radius:6px;
-border:1px solid #ccc;
-font-size:14px;
-}
+    .field input,
+    .field select{
+      width:100%;
+      padding:13px 14px;
+      border:1px solid #cfd4d1;
+      border-radius:8px;
+      font-size:15px;
+      font-family:inherit;
+      color:var(--text);
+      background:#fff;
+    }
 
-.row{
-display:flex;
-gap:15px;
-}
+    .field input:disabled{
+      background:#f7f7f7;
+      color:#4b5a52;
+    }
 
-.row .field{
-flex:1;
-}
+    .row{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+    }
 
-/* PDF */
+    .row .field{
+      flex:1 1 220px;
+    }
 
-.pdf-box{
-margin-top:30px;
-border-radius:10px;
-overflow:hidden;
-border:1px solid #ddd;
-}
+    .pdf-box{
+      margin-top:24px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow:0 4px 18px rgba(0,0,0,0.04);
+    }
 
-iframe{
-width:100%;
-height:600px;
-border:none;
-}
+    iframe{
+      display:block;
+      width:100%;
+      height:720px;
+      border:none;
+      background:#fff;
+    }
 
-/* BUTTONS */
+    .checkbox-line,
+    .radio-line{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      margin:14px 0 0;
+      line-height:1.5;
+    }
 
-.button{
-background:#03953F;
-color:white;
-padding:14px 34px;
-border-radius:30px;
-border:none;
-font-size:15px;
-cursor:pointer;
-}
+    .checkbox-line input,
+    .radio-line input{
+      margin-top:2px;
+      width:18px;
+      height:18px;
+      flex:0 0 18px;
+    }
 
-.button:hover{
-background:#028a39;
-}
+    .button-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:32px;
+    }
 
-.button-secondary{
-background:#ddd;
-color:#333;
-padding:14px 34px;
-border-radius:30px;
-border:none;
-font-size:15px;
-cursor:pointer;
-margin-right:10px;
-}
+    .button,
+    .button-secondary,
+    .upload-button{
+      border:none;
+      border-radius:999px;
+      padding:14px 28px;
+      font-size:15px;
+      font-weight:600;
+      font-family:inherit;
+      cursor:pointer;
+      transition:0.2s ease;
+    }
 
-.button-row{
-margin-top:30px;
-}
+    .button{
+      background:var(--green);
+      color:#fff;
+    }
 
-/* NOTICE */
+    .button:hover,
+    .upload-button:hover{
+      filter:brightness(0.95);
+    }
 
-.notice{
-background:#ECFDF5;
-border-left:5px solid #03953F;
-padding:20px;
-border-radius:8px;
-margin-bottom:30px;
-}
+    .button-secondary{
+      background:var(--grey-btn);
+      color:#23332b;
+    }
 
-/* ACCORDION */
+    .notice{
+      background:var(--green-light);
+      border-left:5px solid var(--green);
+      border-radius:10px;
+      padding:20px;
+      margin-bottom:28px;
+    }
 
-.accordion-item{
-border-bottom:1px solid #ddd;
-}
+    .notice strong{
+      color:var(--green-dark);
+    }
 
-.accordion-header{
-cursor:pointer;
-padding:18px;
-font-weight:600;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:white;
-}
+    .accordion{
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      background:#fff;
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow:0 4px 18px rgba(0,0,0,0.04);
+    }
 
-.accordion-header::after{
-content:"▼";
-font-size:12px;
-transition:transform .2s ease;
-}
+    .accordion-item + .accordion-item{
+      border-top:1px solid var(--border);
+    }
 
-.accordion-header.active::after{
-transform:rotate(180deg);
-}
+    .accordion-header{
+      width:100%;
+      background:#fff;
+      border:none;
+      padding:20px 22px;
+      text-align:left;
+      font-size:17px;
+      font-weight:600;
+      color:var(--green-dark);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      cursor:pointer;
+      font-family:inherit;
+    }
 
-.accordion-content{
-display:none;
-padding:20px;
-background:white;
-}
+    .accordion-header:hover{
+      background:#fafafa;
+    }
 
-.checkbox-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-}
+    .accordion-header::after{
+      content:"▼";
+      font-size:12px;
+      transition:transform 0.2s ease;
+      color:var(--green-dark);
+    }
 
-.upload-box{
-background:#ECFDF5;
-border:2px dashed #BBF7D0;
-padding:20px;
-border-radius:8px;
-margin-top:15px;
-}
+    .accordion-header.active::after{
+      transform:rotate(180deg);
+    }
 
-/* DECLARATION */
+    .accordion-content{
+      display:none;
+      padding:0 22px 24px;
+      background:#fff;
+    }
 
-.declaration{
-background:white;
-padding:25px;
-border-radius:10px;
-border:1px solid #ddd;
-}
+    .accordion-content.open{
+      display:block;
+    }
 
-.hidden{
-display:none;
-}
+    .accordion-intro{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:15px;
+    }
 
-</style>
+    .checkbox-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px 24px;
+    }
 
+    .checkbox-grid label{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      line-height:1.5;
+    }
+
+    .checkbox-grid input{
+      width:18px;
+      height:18px;
+      margin-top:2px;
+      flex:0 0 18px;
+    }
+
+    .upload-box{
+      background:var(--green-light);
+      border:2px dashed var(--green-soft);
+      padding:18px;
+      border-radius:12px;
+      margin-top:16px;
+    }
+
+    .upload-box strong{
+      display:block;
+      margin-bottom:8px;
+      font-size:16px;
+    }
+
+    .upload-help{
+      margin:0 0 14px;
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    .upload-button{
+      background:#7b8794;
+      color:#fff;
+      border-radius:8px;
+      padding:12px 18px;
+    }
+
+    .inline-note{
+      margin-top:12px;
+      font-size:14px;
+      color:var(--muted);
+    }
+
+    .declaration{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:24px;
+      box-shadow:0 4px 18px rgba(0,0,0,0.04);
+    }
+
+    .declaration-title{
+      color:#d89c00;
+      font-weight:600;
+      margin:0 0 10px;
+      font-size:28px;
+    }
+
+    .declaration ul{
+      margin:14px 0 0 20px;
+      padding:0;
+      line-height:1.75;
+    }
+
+    .declaration a{
+      color:#0d6efd;
+      text-decoration:none;
+    }
+
+    .declaration a:hover{
+      text-decoration:underline;
+    }
+
+    @media (max-width: 768px){
+      .header{
+        padding:16px 20px;
+      }
+
+      .hero{
+        padding:42px 20px;
+      }
+
+      .hero h1{
+        font-size:32px;
+      }
+
+      .section{
+        padding:36px 20px 52px;
+      }
+
+      h2{
+        font-size:26px;
+      }
+
+      .checkbox-grid{
+        grid-template-columns:1fr;
+      }
+
+      iframe{
+        height:560px;
+      }
+
+      .accordion-header{
+        font-size:16px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="header">
-<div class="logo">
-<img src="01-My Refund-Logo_Main.png">
-</div>
-</div>
-
-<div class="hero">
-<div class="hero-inner">
-
-<h1>Confirm your income details</h1>
-
-<p><strong>Tax Year 2026</strong> (1 April 2025 – 31 March 2026)</p>
-
-</div>
-</div>
-
-
-<!-- PAGE 1 -->
-
-<div class="section" id="page1">
-
-<h2>Your details</h2>
-
-<div class="field">
-<label>Name</label>
-<input value="Drew Biggart" disabled>
-</div>
-
-<h3>Address</h3>
-
-<div class="field">
-<label>Street Address</label>
-<input placeholder="25 Churchill Street">
-</div>
-
-<div class="row">
-<div class="field">
-<label>Suburb</label>
-<input placeholder="Christchurch Central">
-</div>
-<div class="field">
-<label>City</label>
-<input placeholder="Christchurch">
-</div>
-<div class="field">
-<label>Postcode</label>
-<input placeholder="8011">
-</div>
-</div>
-
-<h3>Contact details</h3>
-
-<div class="field">
-<label>Contact number</label>
-<input value="0800 80 89 89">
-</div>
-
-<div class="field">
-<label>Email</label>
-<input value="drew@myrefund.co.nz">
-</div>
-
-<h3>Bank details</h3>
-
-<div class="field">
-<label>Account holder name</label>
-<input value="D Biggart">
-</div>
-
-<div class="field">
-<label>Bank account number</label>
-<input value="12-1234-123456-123">
-</div>
-
-<h2>Your IRD income information</h2>
-
-<p>Please review the income information we received from Inland Revenue.</p>
-
-<div class="pdf-box">
-<iframe src="73000.pdf"></iframe>
-</div>
-
-<label style="margin-top:25px;display:block">
-
-<input type="checkbox" id="noOtherIncome">
-
-I have received no other income other than what is shown above.
-
-</label>
-
-<div class="button-row">
-<button class="button" onclick="continueFromPage1()">Continue</button>
-</div>
-
-</div>
-
-
-
-<!-- PAGE 2 -->
-
-<div class="section hidden" id="page2">
-
-<h2>Other information for your tax return</h2>
-
-<div class="notice">
-
-Tick any sections that apply to you for the <strong>2026 tax year</strong>.
-
-<br><br>
-
-Some questions may already be pre-selected based on your previous information. Please review carefully and untick any that do not apply.
-
-</div>
-
-<div class="accordion">
-
-<div class="accordion-item">
-<div class="accordion-header">Additional income</div>
-<div class="accordion-content">
-
-<div class="checkbox-grid">
-<label><input type="checkbox"> Self employed</label>
-<label><input type="checkbox"> Partnership business income</label>
-<label><input type="checkbox"> Company profit / loss</label>
-<label><input type="checkbox"> Shareholder income</label>
-<label><input type="checkbox"> Rental income</label>
-<label><input type="checkbox"> Trust income</label>
-<label><input type="checkbox"> Untaxed income</label>
-<label><input type="checkbox"> Overseas income</label>
-<label><input type="checkbox"> Foreign superannuation</label>
-<label><input type="checkbox"> Other income</label>
-</div>
-
-</div>
-</div>
-
-</div>
-
-<div class="button-row">
-
-<button class="button-secondary" onclick="goToPage(1)">Back</button>
-
-<button class="button" onclick="nextPage(2)">Continue</button>
-
-</div>
-
-</div>
-
-
-
-<!-- PAGE 3 -->
-
-<div class="section hidden" id="page3">
-
-<h2>Declaration</h2>
-
-<div class="declaration">
-
-<p>I declare that the below statements are true and correct:</p>
-
-<ul>
-
-<li>I have reviewed the earnings information including employer name and PAYE</li>
-<li>I have reviewed any investment income listed</li>
-<li>I have advised My Refund Ltd of any additional income or expenses not shown</li>
-<li>My Refund Ltd may sign and file tax returns on my behalf</li>
-<li>I will pay any tax owing to IRD by the due date</li>
-<li>I confirm all information provided is correct</li>
-<li>I agree to the <a href="#">terms and conditions</a></li>
-
-</ul>
-
-<label>
-
-<input type="checkbox">
-
-Ticking this acknowledges you agree with the declaration and constitutes an electronic signature
-
-</label>
-
-<br><br>
-
-<label>
-
-<input type="checkbox">
-
-I confirm the contact details recorded for me are correct
-
-</label>
-
-</div>
-
-<div class="button-row">
-
-<button class="button-secondary" onclick="backFromPage3()">Back</button>
-
-<button class="button">Submit confirmation</button>
-
-</div>
-
-</div>
-
-
-
-<script>
-
-let skippedPage2 = false;
-
-function continueFromPage1(){
-
-if(document.getElementById("noOtherIncome").checked){
-
-skippedPage2 = true;
-goToPage(3);
-
-}else{
-
-skippedPage2 = false;
-goToPage(2);
-
-}
-
-}
-
-function goToPage(page){
-
-document.querySelectorAll(".section").forEach(p=>{
-p.classList.add("hidden");
-});
-
-document.getElementById("page"+page).classList.remove("hidden");
-
-window.scrollTo(0,0);
-
-}
-
-function nextPage(current){
-
-goToPage(current+1);
-
-}
-
-function backFromPage3(){
-
-if(skippedPage2){
-
-goToPage(1);
-
-}else{
-
-goToPage(2);
-
-}
-
-}
-
-/* accordion */
-
-document.querySelectorAll(".accordion-header").forEach(header=>{
-
-header.addEventListener("click",function(){
-
-let content=this.nextElementSibling;
-let open=content.style.display==="block";
-
-document.querySelectorAll(".accordion-content").forEach(c=>c.style.display="none");
-document.querySelectorAll(".accordion-header").forEach(h=>h.classList.remove("active"));
-
-if(!open){
-
-content.style.display="block";
-this.classList.add("active");
-
-}
-
-});
-
-});
-
-</script>
-
+  <div class="header">
+    <div class="logo">
+      <img src="01-My Refund-Logo_Main.png" alt="My Refund logo">
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>Confirm your income details</h1>
+      <p>Before we complete your tax return, please review the information below and confirm everything is correct.</p>
+      <p><strong>Tax Year 2026</strong> (1 April 2025 – 31 March 2026)</p>
+    </div>
+  </div>
+
+  <!-- PAGE 1 -->
+  <div class="section" id="page1">
+    <h2>Your details</h2>
+
+    <div class="field">
+      <label for="name">Name</label>
+      <input id="name" type="text" value="Drew Biggart" disabled>
+    </div>
+
+    <h3>Address</h3>
+
+    <div class="field">
+      <label for="street">Street address</label>
+      <input id="street" type="text" placeholder="25 Churchill Street">
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label for="suburb">Suburb</label>
+        <input id="suburb" type="text" placeholder="Christchurch Central">
+      </div>
+
+      <div class="field">
+        <label for="city">City</label>
+        <input id="city" type="text" placeholder="Christchurch">
+      </div>
+
+      <div class="field">
+        <label for="postcode">Postcode</label>
+        <input id="postcode" type="text" placeholder="8011">
+      </div>
+    </div>
+
+    <h3>Contact details</h3>
+
+    <div class="field">
+      <label for="phone">Contact number</label>
+      <input id="phone" type="text" value="0800 80 89 89">
+    </div>
+
+    <div class="field">
+      <label for="email">Email</label>
+      <input id="email" type="email" value="drew@myrefund.co.nz">
+    </div>
+
+    <h3>Bank details</h3>
+
+    <div class="field">
+      <label for="accountName">Bank account holder name</label>
+      <input id="accountName" type="text" value="D Biggart">
+    </div>
+
+    <div class="field">
+      <label for="accountNumber">Bank account number</label>
+      <input id="accountNumber" type="text" value="12-1234-123456-123">
+    </div>
+
+    <h2>Your IRD income information</h2>
+    <p>Please review the income information we received from Inland Revenue.</p>
+
+    <div class="pdf-box">
+      <iframe src="73000.pdf" title="IRD income information PDF"></iframe>
+    </div>
+
+    <label class="checkbox-line" for="noOtherIncome">
+      <input type="checkbox" id="noOtherIncome">
+      <span>I have received no other income other than what is shown above.</span>
+    </label>
+
+    <div class="button-row">
+      <button class="button" type="button" onclick="continueFromPage1()">Continue</button>
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="section hidden" id="page2">
+    <h2>Other information for your tax return</h2>
+
+    <div class="notice">
+      <strong>Please review carefully</strong><br><br>
+      Click any sections that apply to you for the <strong>2026 tax year</strong>.<br><br>
+      Some questions may already be pre-selected based on your previous information - please review carefully and untick any that do not apply to the tax year.
+    </div>
+
+    <div class="accordion">
+
+      <!-- SECTION 1 -->
+      <div class="accordion-item">
+        <button class="accordion-header" type="button">Additional income</button>
+        <div class="accordion-content">
+          <p class="accordion-intro">Received additional income other than salary, wages or benefit?</p>
+
+          <div class="checkbox-grid">
+            <label><input type="checkbox"> <span>Self employed</span></label>
+            <label><input type="checkbox"> <span>Partnership business income</span></label>
+
+            <label><input type="checkbox"> <span>Company profit / loss</span></label>
+            <label><input type="checkbox"> <span>Shareholder income</span></label>
+
+            <label><input type="checkbox"> <span>Rental income</span></label>
+            <label><input type="checkbox"> <span>Trust income</span></label>
+
+            <label><input type="checkbox"> <span>Untaxed income</span></label>
+            <label><input type="checkbox"> <span>Overseas income</span></label>
+
+            <label><input type="checkbox"> <span>Foreign superannuation or pension scheme</span></label>
+            <label><input type="checkbox"> <span>Other income</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2 -->
+      <div class="accordion-item">
+        <button class="accordion-header" type="button">Dividends / interest / Māori Authority distributions</button>
+        <div class="accordion-content">
+          <p class="accordion-intro">Earned dividends, interest, or Māori Authority distributions?</p>
+
+          <div class="checkbox-grid">
+            <label><input type="checkbox"> <span>Dividends</span></label>
+            <label><input type="checkbox"> <span>Entrust dividends</span></label>
+
+            <label><input type="checkbox"> <span>Interest</span></label>
+            <label><input type="checkbox"> <span>Māori Authority distribution</span></label>
+
+            <label><input type="checkbox"> <span>Was that over $200?</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3 -->
+      <div class="accordion-item">
+        <button class="accordion-header" type="button">Working for Families</button>
+        <div class="accordion-content">
+          <p class="accordion-intro">You or your partner received Working for Families payments?</p>
+
+          <div class="field">
+            <label for="wffType">WFF Type</label>
+            <select id="wffType">
+              <option>None of the above</option>
+              <option>I receive payments and have a partner</option>
+              <option>I receive payments and DO NOT have a partner</option>
+              <option>My partner receives payments</option>
+            </select>
+          </div>
+
+          <p class="inline-note">
+            Please be aware that if you have or had a partner within the financial year, it is required that your partner files their tax return so IRD can assess your Working for Families entitlement before your return can be finalised. This can cause a delay in the processing of your return. If your partner requires assistance with their tax return, they are welcome to apply for our services.
+          </p>
+        </div>
+      </div>
+
+      <!-- SECTION 4 -->
+      <div class="accordion-item">
+        <button class="accordion-header" type="button">Charitable donations</button>
+        <div class="accordion-content">
+          <p class="accordion-intro">Made donation(s) to any charitable organisations?</p>
+
+          <label class="checkbox-line">
+            <input type="checkbox">
+            <span>I give My Refund permission to create a REB Tax Type at IR to process your donation tax credits</span>
+          </label>
+
+          <div class="upload-box">
+            <strong>Donation receipts</strong>
+            <p class="upload-help">Choose multiple donation receipts to upload. The document size should not exceed a maximum file size of 10MB. Only files with the extension pdf, jpg and png are allowed.</p>
+            <button class="upload-button" type="button">Upload files</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 5 -->
+      <div class="accordion-item">
+        <button class="accordion-header" type="button">Accountant / Tax agent fees</button>
+        <div class="accordion-content">
+          <p class="accordion-intro">Do you have any Accountant/Tax Agent Fees to claim that are not associated with My Refund?</p>
+
+          <div class="upload-box">
+            <strong>Accountant/Tax Agent Fees Claim Proof</strong>
+            <p class="upload-help">If you have previously used My Refund Limited's services, we will automatically include any fees charged to you in your tax return.</p>
+            <button class="upload-button" type="button">Upload files</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 6 -->
+      <div class="accordion-item">
+        <button class="accordion-header" type="button">Residential property</button>
+        <div class="accordion-content">
+          <p class="accordion-intro">Bought or sold residential property on/after 1st October 2015?</p>
+
+          <div class="row">
+            <div class="field">
+              <label for="datePurchased">Date purchased</label>
+              <input id="datePurchased" type="date">
+            </div>
+
+            <div class="field">
+              <label for="dateSold">Date sold</label>
+              <input id="dateSold" type="date">
+            </div>
+          </div>
+
+          <label class="checkbox-line">
+            <input type="checkbox">
+            <span>Was this your main home?</span>
+          </label>
+
+          <label class="checkbox-line">
+            <input type="checkbox">
+            <span>Was this a new build?</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- SECTION 7 -->
+      <div class="accordion-item">
+        <button class="accordion-header" type="button">Income protection insurance</button>
+        <div class="accordion-content">
+          <p class="accordion-intro">Do you pay premiums for Income Protection Insurance or Loss of Earnings Insurance, where a payout would be taxable?</p>
+
+          <div class="upload-box">
+            <strong>Income Protection Proofs</strong>
+            <p class="upload-help">Choose multiple income protection or disability insurance proofs to upload. The document size should not exceed a maximum file size of 10MB. Only files with the extension pdf, jpg and png are allowed.</p>
+            <button class="upload-button" type="button">Upload files</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 8 -->
+      <div class="accordion-item">
+        <button class="accordion-header" type="button">Overseas travel</button>
+        <div class="accordion-content">
+          <p class="accordion-intro">Arrived from overseas or been overseas more than 183 days?</p>
+
+          <div class="field">
+            <label for="overseasType">Type</label>
+            <select id="overseasType">
+              <option>None of the above</option>
+              <option>I arrived in New Zealand</option>
+              <option>I temporarily left New Zealand</option>
+              <option>I left New Zealand</option>
+            </select>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label for="arrivalDate">Arrival date</label>
+              <input id="arrivalDate" type="date">
+            </div>
+
+            <div class="field">
+              <label for="leavingDate">Leaving date</label>
+              <input id="leavingDate" type="date">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 9 -->
+      <div class="accordion-item">
+        <button class="accordion-header" type="button">Schedular expenses</button>
+        <div class="accordion-content">
+          <p class="accordion-intro">Do you have any Schedular Expenses to claim?</p>
+
+          <div class="upload-box">
+            <strong>Schedular Expenses Proof</strong>
+            <p class="upload-help">Schedular Expenses are specific costs that can be deducted from income received from schedular payments, reducing taxable income. Examples include material costs, administrative costs, tools and equipment, vehicle expenses, and insurance premiums.</p>
+            <button class="upload-button" type="button">Upload files</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="button-row">
+      <button class="button-secondary" type="button" onclick="goToPage(1)">Back</button>
+      <button class="button" type="button" onclick="goToPage(3)">Continue</button>
+    </div>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div class="section hidden" id="page3">
+    <div class="declaration">
+      <div class="declaration-title">Declaration</div>
+
+      <p>I declare that the below statements are true and correct:</p>
+
+      <ul>
+        <li>I have reviewed the earnings information, including the employer's name, months of income listed and the gross income / PAYE</li>
+        <li>Reviewed any investment income detail listed on the earnings information, including provider, months received and the gross income / tax</li>
+        <li>I have advised My Refund Ltd of any additional sources of income and/or expenses claimable that are not provided on the earnings information summary</li>
+        <li>My Refund Ltd will sign and file any tax returns on my behalf, based on the information provided by myself and/or sourced from Inland Revenue, regardless of whether the result is a tax refund or tax bill.</li>
+        <li>I will pay any tax owing to the IRD on or before the due date. I do not hold My Refund Ltd or its staff liable for any tax bill that is issued as a result of the completion of any tax return</li>
+        <li>I confirm all information provided by myself is true and correct</li>
+        <li>I have read and agree to the <a href="#">terms and conditions</a></li>
+      </ul>
+
+      <label class="checkbox-line" style="margin-top:22px;">
+        <input type="checkbox">
+        <span>Ticking this acknowledges you agree with the declaration and constitutes an electronic signature</span>
+      </label>
+
+      <label class="checkbox-line" style="margin-top:18px;">
+        <input type="checkbox">
+        <span>I confirm the contact details recorded for me are correct</span>
+      </label>
+    </div>
+
+    <div class="button-row">
+      <button class="button-secondary" type="button" onclick="backFromPage3()">Back</button>
+      <button class="button" type="button">Submit confirmation</button>
+    </div>
+  </div>
+
+  <script>
+    let skippedPage2 = false;
+
+    function goToPage(pageNumber){
+      document.getElementById('page1').classList.add('hidden');
+      document.getElementById('page2').classList.add('hidden');
+      document.getElementById('page3').classList.add('hidden');
+
+      document.getElementById('page' + pageNumber).classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function continueFromPage1(){
+      const noOtherIncome = document.getElementById('noOtherIncome').checked;
+
+      if(noOtherIncome){
+        skippedPage2 = true;
+        goToPage(3);
+      } else {
+        skippedPage2 = false;
+        goToPage(2);
+      }
+    }
+
+    function backFromPage3(){
+      if(skippedPage2){
+        goToPage(1);
+      } else {
+        goToPage(2);
+      }
+    }
+
+    const headers = document.querySelectorAll('.accordion-header');
+
+    headers.forEach((header) => {
+      header.addEventListener('click', () => {
+        const content = header.nextElementSibling;
+        const isOpen = content.classList.contains('open');
+
+        document.querySelectorAll('.accordion-content').forEach((item) => {
+          item.classList.remove('open');
+        });
+
+        document.querySelectorAll('.accordion-header').forEach((item) => {
+          item.classList.remove('active');
+        });
+
+        if(!isOpen){
+          content.classList.add('open');
+          header.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
