@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>My Refund – Income Confirmation</title>
+<title>My Refund – Confirm Your Income Details</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 
@@ -14,51 +15,62 @@ body{
 font-family:Poppins, Arial, sans-serif;
 background:#ECFDF5;
 margin:0;
-padding:0;
 color:#094B35;
 }
 
 .container{
-max-width:720px;
+max-width:760px;
 margin:auto;
-padding:30px 20px 60px;
+padding:40px 20px 80px;
 }
 
-.logo{
+/* HEADER */
+
+.header{
 text-align:center;
-margin-bottom:25px;
+margin-bottom:30px;
 }
 
-.logo img{
-max-width:170px;
-height:auto;
+.header img{
+max-width:180px;
+margin-bottom:20px;
 }
 
-/* progress bar */
+.title{
+font-size:28px;
+font-weight:600;
+margin-bottom:10px;
+}
+
+.subtitle{
+font-size:16px;
+color:#4a4a4a;
+}
+
+/* PROGRESS */
 
 .progress{
 display:flex;
 justify-content:space-between;
-margin-bottom:30px;
+margin:40px 0;
 }
 
 .step{
 flex:1;
 text-align:center;
 font-size:13px;
-color:#999;
-position:relative;
+color:#aaa;
 }
 
 .step:before{
 content:"";
 display:block;
-width:26px;
-height:26px;
-border-radius:50%;
+width:30px;
+height:30px;
 margin:auto;
-margin-bottom:6px;
-background:#ddd;
+margin-bottom:8px;
+border-radius:50%;
+background:#dcdcdc;
 }
 
 .step.active{
@@ -70,25 +82,21 @@ font-weight:500;
 background:#03953F;
 }
 
+/* CARD */
+
 .card{
 background:white;
-padding:30px;
+padding:35px;
 border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-transition:all .3s ease;
+box-shadow:0 10px 25px rgba(0,0,0,0.06);
 }
 
-h1{
+h2{
 margin-top:0;
-font-size:24px;
-}
-
-p{
-line-height:1.6;
 }
 
 .section{
-margin-top:25px;
+margin-top:30px;
 }
 
 .field{
@@ -103,47 +111,38 @@ margin-bottom:6px;
 
 .field input{
 width:100%;
-padding:11px;
+padding:12px;
 border-radius:6px;
 border:1px solid #ccc;
 font-size:14px;
 }
 
-.pdf-viewer{
-border:2px dashed #BBF7D0;
+/* PDF */
+
+.pdf-box{
 background:#ECFDF5;
+border:2px dashed #BBF7D0;
 padding:30px;
 text-align:center;
-border-radius:8px;
-margin-top:12px;
+border-radius:10px;
+margin-top:15px;
 }
 
 iframe{
 width:100%;
-height:400px;
+height:420px;
 border:none;
 border-radius:8px;
 }
 
-.checkbox-group label{
+/* CHECKBOX */
+
+.checkbox label{
 display:block;
 margin-bottom:10px;
 }
 
-.button{
-background:#03953F;
-color:white;
-border:none;
-padding:14px 26px;
-border-radius:7px;
-font-size:15px;
-cursor:pointer;
-margin-top:25px;
-}
-
-.button:hover{
-background:#028a39;
-}
+/* DECLARATION */
 
 .declaration{
 background:#ECFDF5;
@@ -152,12 +151,31 @@ border-radius:10px;
 margin-top:20px;
 }
 
+/* BUTTON */
+
+.button{
+background:#03953F;
+color:white;
+border:none;
+padding:14px 26px;
+font-size:15px;
+border-radius:8px;
+cursor:pointer;
+margin-top:30px;
+}
+
+.button:hover{
+background:#028a39;
+}
+
+/* HIDE */
+
 .hidden{
 display:none;
 }
 
 .footer{
-margin-top:35px;
+margin-top:40px;
 font-size:13px;
 text-align:center;
 color:#777;
@@ -171,15 +189,23 @@ color:#777;
 
 <div class="container">
 
-<div class="logo">
-<img src="01-My Refund-Logo_Main.png" alt="My Refund Logo">
+<div class="header">
+
+<img src="01-My Refund-Logo_Main.png">
+
+<div class="title">Confirm your income details</div>
+
+<div class="subtitle">
+Before we complete your tax return, please review the information below and confirm everything is correct.
+</div>
+
 </div>
 
 <div class="progress">
 
-<div class="step active" id="progress1">Details</div>
-<div class="step" id="progress2">Other Income</div>
-<div class="step" id="progress3">Declaration</div>
+<div class="step active" id="p1">Details</div>
+<div class="step" id="p2">Other income</div>
+<div class="step" id="p3">Declaration</div>
 
 </div>
 
@@ -188,53 +214,42 @@ color:#777;
 
 <div class="card" id="step1">
 
-<h1>Confirm Your Income Details</h1>
-
-<p>
-Before we complete your tax return, please review the information below and confirm everything is correct.
-</p>
-
-<div class="section">
-
-<h3>Your Details</h3>
+<h2>Your details</h2>
 
 <div class="field">
-<label>Full Name</label>
-<input type="text" placeholder="Client name">
+<label>Full name</label>
+<input placeholder="Client name">
 </div>
 
 <div class="field">
 <label>Email</label>
-<input type="email" placeholder="Client email">
+<input placeholder="Email address">
 </div>
 
 <div class="field">
 <label>Phone</label>
-<input type="text" placeholder="Phone number">
+<input placeholder="Phone number">
 </div>
 
 <div class="field">
 <label>Address</label>
-<input type="text" placeholder="Home address">
+<input placeholder="Home address">
 </div>
 
 <div class="field">
-<label>Bank Account</label>
-<input type="text" placeholder="Refund bank account">
-</div>
-
+<label>Bank account</label>
+<input placeholder="Refund bank account">
 </div>
 
 <div class="section">
 
-<h3>Your IRD Income Information</h3>
+<h2>Your IRD income information</h2>
 
-<p>Please review the income information we received from IRD.</p>
+<p>Please review the income information we received from Inland Revenue.</p>
 
-<div class="pdf-viewer">
+<div class="pdf-box">
 
-<!-- Placeholder PDF -->
-PDF preview will appear here
+Income summary from IRD will appear here
 
 <br><br>
 
@@ -244,7 +259,7 @@ PDF preview will appear here
 
 </div>
 
-<button class="button" onclick="nextStep()">Next</button>
+<button class="button" onclick="next1()">Next</button>
 
 </div>
 
@@ -253,30 +268,30 @@ PDF preview will appear here
 
 <div class="card hidden" id="step2">
 
-<h1>Other Income</h1>
+<h2>Other income</h2>
 
 <p>
 Please tell us if you received any income that may not appear in the IRD report.
 </p>
 
-<div class="checkbox-group">
+<div class="checkbox">
 
 <label><input type="checkbox"> Self-employed income</label>
 <label><input type="checkbox"> Cash jobs or side work</label>
-<label><input type="checkbox"> Overseas income</label>
 <label><input type="checkbox"> Rental income</label>
-<label><input type="checkbox"> Investment or interest income</label>
-<label><input type="checkbox"> Other income (placeholder)</label>
+<label><input type="checkbox"> Overseas income</label>
+<label><input type="checkbox"> Investment income</label>
+<label><input type="checkbox"> Other income</label>
 
 </div>
 
-<div class="pdf-viewer">
+<div class="pdf-box">
 
-Additional income details form placeholder
+Additional income details placeholder
 
 </div>
 
-<button class="button" onclick="nextStep2()">Next</button>
+<button class="button" onclick="next2()">Next</button>
 
 </div>
 
@@ -285,11 +300,9 @@ Additional income details form placeholder
 
 <div class="card hidden" id="step3">
 
-<h1>Declaration</h1>
+<h2>Declaration</h2>
 
-<p>
-Please confirm the information provided is correct.
-</p>
+<p>Please confirm the information provided is correct.</p>
 
 <div class="declaration">
 
@@ -303,15 +316,16 @@ I confirm the information provided is correct and complete to the best of my kno
 
 </div>
 
-<div class="pdf-viewer">
+<div class="pdf-box">
 
 Digital signature placeholder
 
 </div>
 
-<button class="button">Submit Confirmation</button>
+<button class="button">Submit confirmation</button>
 
 </div>
+
 
 <div class="footer">
 
@@ -323,23 +337,23 @@ My Refund
 
 <script>
 
-function nextStep(){
+function next1(){
 
 document.getElementById("step1").classList.add("hidden");
 document.getElementById("step2").classList.remove("hidden");
 
-document.getElementById("progress1").classList.remove("active");
-document.getElementById("progress2").classList.add("active");
+document.getElementById("p1").classList.remove("active");
+document.getElementById("p2").classList.add("active");
 
 }
 
-function nextStep2(){
+function next2(){
 
 document.getElementById("step2").classList.add("hidden");
 document.getElementById("step3").classList.remove("hidden");
 
-document.getElementById("progress2").classList.remove("active");
-document.getElementById("progress3").classList.add("active");
+document.getElementById("p2").classList.remove("active");
+document.getElementById("p3").classList.add("active");
 
 }
 
