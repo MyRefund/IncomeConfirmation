@@ -44,12 +44,12 @@ margin:auto;
 }
 
 .hero h1{
-font-size:40px;
+font-size:38px;
 margin-bottom:10px;
 }
 
 .hero p{
-font-size:18px;
+font-size:17px;
 opacity:.85;
 }
 
@@ -59,10 +59,6 @@ opacity:.85;
 max-width:900px;
 margin:auto;
 padding:60px 20px;
-}
-
-h2{
-margin-top:40px;
 }
 
 /* FORM */
@@ -92,31 +88,6 @@ gap:15px;
 
 .row .field{
 flex:1;
-}
-
-/* CHECKBOX GRID */
-
-.checkbox-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-margin-top:10px;
-}
-
-.checkbox-grid label{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-/* FILE UPLOAD */
-
-.upload-box{
-background:#ECFDF5;
-border:2px dashed #BBF7D0;
-padding:25px;
-border-radius:10px;
-margin-top:15px;
 }
 
 /* PDF */
@@ -158,7 +129,51 @@ background:#ECFDF5;
 border-left:5px solid #03953F;
 padding:20px;
 border-radius:8px;
-margin-bottom:25px;
+margin-bottom:30px;
+}
+
+/* ACCORDION */
+
+.accordion{
+border-top:1px solid #ddd;
+}
+
+.accordion-item{
+border-bottom:1px solid #ddd;
+}
+
+.accordion-header{
+cursor:pointer;
+padding:18px;
+font-weight:600;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:white;
+}
+
+.accordion-header:hover{
+background:#f9f9f9;
+}
+
+.accordion-content{
+display:none;
+padding:20px;
+background:white;
+}
+
+.checkbox-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+.upload-box{
+background:#ECFDF5;
+border:2px dashed #BBF7D0;
+padding:20px;
+border-radius:8px;
+margin-top:15px;
 }
 
 .hidden{
@@ -196,7 +211,6 @@ Before we complete your tax return, please review the information below and conf
 
 </div>
 </div>
-
 
 
 <!-- PAGE 1 -->
@@ -283,21 +297,28 @@ Before we complete your tax return, please review the information below and conf
 
 <div class="notice">
 
-<strong>Please review carefully</strong>
+<strong>Before you continue</strong>
 
 <br><br>
 
-Tick any options that apply to you for this tax year.
+Tick any sections that apply to you for the <strong>2026 tax year</strong>.
 
 <br><br>
 
-Some questions may already be pre-selected based on your previous information. Please review carefully and untick any that do not apply to the tax year.
+Some questions may already be pre-selected based on your previous information. Please review carefully and untick any that do not apply.
 
 </div>
 
 
 
-<h2>Additional income</h2>
+<div class="accordion">
+
+
+<!-- ADDITIONAL INCOME -->
+
+<div class="accordion-item">
+<div class="accordion-header">Additional income</div>
+<div class="accordion-content">
 
 <div class="checkbox-grid">
 
@@ -318,9 +339,16 @@ Some questions may already be pre-selected based on your previous information. P
 
 </div>
 
+</div>
+</div>
 
 
-<h2>Dividends / Interest</h2>
+
+<!-- INVESTMENT INCOME -->
+
+<div class="accordion-item">
+<div class="accordion-header">Dividends / Interest</div>
+<div class="accordion-content">
 
 <div class="checkbox-grid">
 
@@ -334,9 +362,16 @@ Some questions may already be pre-selected based on your previous information. P
 
 </div>
 
+</div>
+</div>
 
 
-<h2>Working for Families</h2>
+
+<!-- WORKING FOR FAMILIES -->
+
+<div class="accordion-item">
+<div class="accordion-header">Working for Families</div>
+<div class="accordion-content">
 
 <select>
 
@@ -349,13 +384,20 @@ Some questions may already be pre-selected based on your previous information. P
 
 <p style="font-size:14px">
 
-If you have or had a partner during the financial year, IRD requires your partner to file their tax return before your Working for Families entitlement can be assessed. This may delay processing of your return.
+If you have or had a partner during the financial year, IRD requires your partner to file their tax return before your Working for Families entitlement can be assessed.
 
 </p>
 
+</div>
+</div>
 
 
-<h2>Charitable donations</h2>
+
+<!-- DONATIONS -->
+
+<div class="accordion-item">
+<div class="accordion-header">Charitable donations</div>
+<div class="accordion-content">
 
 <label>
 <input type="checkbox">
@@ -364,26 +406,27 @@ I give My Refund permission to create a REB tax type at IR to process your donat
 
 <div class="upload-box">
 
-<strong>Donation receipts</strong>
-
 <p style="font-size:14px">
-
-Upload your donation receipts. Maximum file size 10MB. Allowed file types: PDF, JPG, PNG.
-
+Upload your donation receipts (PDF, JPG, PNG – max 10MB)
 </p>
 
 <button class="button">Upload files</button>
 
 </div>
 
+</div>
+</div>
 
 
-<h2>Accountant / Tax agent fees</h2>
+
+<!-- ACCOUNTANT FEES -->
+
+<div class="accordion-item">
+<div class="accordion-header">Accountant / Tax agent fees</div>
+<div class="accordion-content">
 
 <p style="font-size:14px">
-
-If you have previously used My Refund Limited's services, we will automatically include any fees charged to you.
-
+If you have previously used My Refund Limited's services, we automatically include our fees in your return.
 </p>
 
 <div class="upload-box">
@@ -392,9 +435,16 @@ If you have previously used My Refund Limited's services, we will automatically 
 
 </div>
 
+</div>
+</div>
 
 
-<h2>Residential property</h2>
+
+<!-- PROPERTY -->
+
+<div class="accordion-item">
+<div class="accordion-header">Residential property</div>
+<div class="accordion-content">
 
 <div class="row">
 
@@ -410,28 +460,40 @@ If you have previously used My Refund Limited's services, we will automatically 
 
 </div>
 
-<label><input type="checkbox"> Was this your main home?</label>
+<label><input type="checkbox"> Was this your main home?</label><br>
 <label><input type="checkbox"> Was this a new build?</label>
 
+</div>
+</div>
 
 
-<h2>Income protection insurance</h2>
+
+<!-- INSURANCE -->
+
+<div class="accordion-item">
+<div class="accordion-header">Income protection insurance</div>
+<div class="accordion-content">
 
 <div class="upload-box">
 
 <p style="font-size:14px">
-
 Upload proof of income protection or disability insurance premiums.
-
 </p>
 
 <button class="button">Upload files</button>
 
 </div>
 
+</div>
+</div>
 
 
-<h2>Overseas travel</h2>
+
+<!-- OVERSEAS -->
+
+<div class="accordion-item">
+<div class="accordion-header">Overseas travel</div>
+<div class="accordion-content">
 
 <select>
 
@@ -456,22 +518,33 @@ Upload proof of income protection or disability insurance premiums.
 
 </div>
 
+</div>
+</div>
 
 
-<h2>Schedular expenses</h2>
+
+<!-- SCHEDULAR -->
+
+<div class="accordion-item">
+<div class="accordion-header">Schedular expenses</div>
+<div class="accordion-content">
 
 <div class="upload-box">
 
 <p style="font-size:14px">
-
-Upload proof of schedular expenses such as tools, equipment, materials, or vehicle expenses.
-
+Upload proof of expenses such as materials, tools, vehicle costs or insurance.
 </p>
 
 <button class="button">Upload files</button>
 
 </div>
 
+</div>
+</div>
+
+
+
+</div>
 
 </div>
 
@@ -487,6 +560,24 @@ document.getElementById("page2").classList.remove("hidden");
 window.scrollTo(0,0);
 
 }
+
+/* accordion */
+
+document.querySelectorAll(".accordion-header").forEach(header => {
+
+header.addEventListener("click", function(){
+
+let content = this.nextElementSibling;
+
+document.querySelectorAll(".accordion-content").forEach(c=>{
+if(c!==content) c.style.display="none";
+});
+
+content.style.display = content.style.display === "block" ? "none" : "block";
+
+});
+
+});
 
 </script>
 
