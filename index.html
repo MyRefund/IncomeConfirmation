@@ -14,35 +14,28 @@
 body{
 font-family:Poppins, sans-serif;
 margin:0;
+background:#f4f4f4;
 color:#0B4B3A;
-background:#f5f5f5;
 }
 
 /* HEADER */
 
 .header{
 background:#0B4B3A;
-color:white;
 padding:18px 40px;
 display:flex;
 align-items:center;
-justify-content:space-between;
 }
 
 .logo img{
 height:28px;
 }
 
-.nav{
-font-size:14px;
-opacity:.9;
-}
-
 /* HERO */
 
 .hero{
 background:#efefef;
-padding:80px 20px;
+padding:70px 20px;
 }
 
 .hero-inner{
@@ -51,52 +44,33 @@ margin:auto;
 }
 
 .hero h1{
-font-size:42px;
-margin:0 0 10px 0;
+font-size:40px;
+margin-bottom:10px;
 }
 
 .hero p{
 font-size:18px;
-opacity:.8;
+opacity:.85;
 }
 
-/* SECTION */
+/* CONTENT */
 
 .section{
 max-width:900px;
 margin:auto;
-padding:70px 20px;
-}
-
-/* STEP INDICATOR */
-
-.steps{
-display:flex;
-justify-content:center;
-gap:40px;
-margin-bottom:40px;
-font-size:14px;
-}
-
-.step{
-opacity:.4;
-}
-
-.step.active{
-opacity:1;
-font-weight:600;
+padding:60px 20px;
 }
 
 /* FORM */
 
 .field{
-margin-bottom:18px;
+margin-bottom:20px;
 }
 
 .field label{
 display:block;
-margin-bottom:6px;
 font-weight:500;
+margin-bottom:6px;
 }
 
 .field input{
@@ -107,37 +81,40 @@ border:1px solid #ccc;
 font-size:14px;
 }
 
-/* PDF AREA */
+.row{
+display:flex;
+gap:15px;
+}
+
+.row .field{
+flex:1;
+}
+
+/* BANK */
+
+.bank-row{
+display:flex;
+gap:10px;
+}
+
+.bank-row input{
+flex:1;
+text-align:center;
+}
+
+/* PDF */
 
 .pdf-box{
-background:#ECFDF5;
-border:2px dashed #BBF7D0;
-padding:40px;
+margin-top:30px;
 border-radius:10px;
-text-align:center;
-margin-top:20px;
+overflow:hidden;
+border:1px solid #ddd;
 }
 
 iframe{
 width:100%;
-height:450px;
+height:600px;
 border:none;
-border-radius:8px;
-}
-
-/* CHECKBOX */
-
-.checkbox label{
-display:block;
-margin-bottom:12px;
-}
-
-/* DECLARATION */
-
-.declaration{
-background:#ECFDF5;
-padding:25px;
-border-radius:10px;
 }
 
 /* BUTTON */
@@ -145,7 +122,7 @@ border-radius:10px;
 .button{
 background:#03953F;
 color:white;
-padding:14px 32px;
+padding:14px 34px;
 border-radius:30px;
 border:none;
 font-size:15px;
@@ -157,10 +134,9 @@ margin-top:30px;
 background:#028a39;
 }
 
-/* HIDDEN */
-
-.hidden{
-display:none;
+.taxyear{
+margin-top:30px;
+font-weight:500;
 }
 
 </style>
@@ -169,16 +145,13 @@ display:none;
 
 <body>
 
+
 <!-- HEADER -->
 
 <div class="header">
 
 <div class="logo">
 <img src="01-My Refund-Logo_Main.png">
-</div>
-
-<div class="nav">
-Income Confirmation
 </div>
 
 </div>
@@ -196,160 +169,141 @@ Income Confirmation
 Before we complete your tax return, please review the information below and confirm everything is correct.
 </p>
 
+<div class="taxyear">
+
+Tax Year: <strong>2026</strong>  
+(1 April 2025 – 31 March 2026)
+
+</div>
+
 </div>
 
 </div>
 
 
-<!-- SECTION -->
+<!-- DETAILS SECTION -->
 
 <div class="section">
 
-<div class="steps">
-
-<div class="step active" id="s1">1. Details</div>
-<div class="step" id="s2">2. Other income</div>
-<div class="step" id="s3">3. Declaration</div>
-
-</div>
-
-
-<!-- STEP 1 -->
-
-<div id="step1">
-
 <h2>Your details</h2>
 
+<!-- NAME (LOCKED) -->
+
 <div class="field">
-<label>Full name</label>
-<input placeholder="Client name">
+
+<label>Name</label>
+
+<input value="Drew Biggart" disabled>
+
+</div>
+
+
+<!-- ADDRESS -->
+
+<h3>Address</h3>
+
+<div class="field">
+
+<label>Street address</label>
+
+<input placeholder="25 Churchill Street">
+
+</div>
+
+<div class="row">
+
+<div class="field">
+
+<label>Suburb</label>
+
+<input placeholder="Christchurch Central">
+
 </div>
 
 <div class="field">
+
+<label>City</label>
+
+<input placeholder="Christchurch">
+
+</div>
+
+<div class="field">
+
+<label>Postcode</label>
+
+<input placeholder="8011">
+
+</div>
+
+</div>
+
+
+<!-- CONTACT -->
+
+<h3>Contact details</h3>
+
+<div class="field">
+
+<label>Contact number</label>
+
+<input value="0800 80 89 89">
+
+</div>
+
+<div class="field">
+
 <label>Email</label>
-<input placeholder="Email">
+
+<input value="drew@myrefund.co.nz">
+
+</div>
+
+
+<!-- BANK DETAILS -->
+
+<h3>Bank details</h3>
+
+<div class="field">
+
+<label>Account holder name</label>
+
+<input value="D Biggart">
+
 </div>
 
 <div class="field">
-<label>Phone</label>
-<input placeholder="Phone">
+
+<label>Bank account number</label>
+
+<input value="12-1234-123456-123">
+
 </div>
 
-<div class="field">
-<label>Address</label>
-<input placeholder="Address">
-</div>
 
-<div class="field">
-<label>Bank account</label>
-<input placeholder="Refund bank account">
-</div>
+<!-- PDF -->
 
-<h2 style="margin-top:40px">Your IRD income information</h2>
+<h2 style="margin-top:50px">Your IRD income information</h2>
 
-<p>Please review the income information we received from Inland Revenue.</p>
+<p>
+Please review the income information we received from Inland Revenue.
+</p>
 
 <div class="pdf-box">
 
-IRD income summary placeholder
-
-<br><br>
-
-<iframe src=""></iframe>
-
-</div>
-
-<button class="button" onclick="next1()">Next</button>
+<iframe src="73000.pdf"></iframe>
 
 </div>
 
 
-<!-- STEP 2 -->
+<button class="button">
 
-<div id="step2" class="hidden">
+Continue
 
-<h2>Other income</h2>
+</button>
 
-<p>Please tell us if you received income not shown in the IRD report.</p>
-
-<div class="checkbox">
-
-<label><input type="checkbox"> Self-employed income</label>
-<label><input type="checkbox"> Cash jobs</label>
-<label><input type="checkbox"> Rental income</label>
-<label><input type="checkbox"> Overseas income</label>
-<label><input type="checkbox"> Investment income</label>
-<label><input type="checkbox"> Other income</label>
 
 </div>
-
-<div class="pdf-box">
-
-Additional income details placeholder
-
-</div>
-
-<button class="button" onclick="next2()">Next</button>
-
-</div>
-
-
-<!-- STEP 3 -->
-
-<div id="step3" class="hidden">
-
-<h2>Declaration</h2>
-
-<p>Please confirm the information provided is correct.</p>
-
-<div class="declaration">
-
-<label>
-
-<input type="checkbox">
-
-I confirm the information provided is correct and complete to the best of my knowledge. I understand My Refund will use this information to prepare my tax return.
-
-</label>
-
-</div>
-
-<div class="pdf-box">
-
-Digital signature placeholder
-
-</div>
-
-<button class="button">Submit confirmation</button>
-
-</div>
-
-</div>
-
-
-<script>
-
-function next1(){
-
-document.getElementById("step1").classList.add("hidden");
-document.getElementById("step2").classList.remove("hidden");
-
-document.getElementById("s1").classList.remove("active");
-document.getElementById("s2").classList.add("active");
-
-}
-
-function next2(){
-
-document.getElementById("step2").classList.add("hidden");
-document.getElementById("step3").classList.remove("hidden");
-
-document.getElementById("s2").classList.remove("active");
-document.getElementById("s3").classList.add("active");
-
-}
-
-</script>
 
 </body>
 </html>
