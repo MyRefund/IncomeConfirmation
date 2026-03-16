@@ -12,7 +12,7 @@
 <style>
 
 body{
-font-family:Poppins, sans-serif;
+font-family:Poppins,sans-serif;
 margin:0;
 background:#f4f4f4;
 color:#0B4B3A;
@@ -35,7 +35,7 @@ height:28px;
 
 .hero{
 background:#efefef;
-padding:70px 20px;
+padding:60px 20px;
 }
 
 .hero-inner{
@@ -44,13 +44,8 @@ margin:auto;
 }
 
 .hero h1{
-font-size:38px;
+font-size:36px;
 margin-bottom:10px;
-}
-
-.hero p{
-font-size:17px;
-opacity:.85;
 }
 
 /* CONTENT */
@@ -60,8 +55,6 @@ max-width:900px;
 margin:auto;
 padding:60px 20px;
 }
-
-/* FORM */
 
 .field{
 margin-bottom:18px;
@@ -134,10 +127,6 @@ margin-bottom:30px;
 
 /* ACCORDION */
 
-.accordion{
-border-top:1px solid #ddd;
-}
-
 .accordion-item{
 border-bottom:1px solid #ddd;
 }
@@ -152,8 +141,14 @@ align-items:center;
 background:white;
 }
 
-.accordion-header:hover{
-background:#f9f9f9;
+.accordion-header::after{
+content:"▼";
+font-size:12px;
+transition:transform .2s ease;
+}
+
+.accordion-header.active::after{
+transform:rotate(180deg);
 }
 
 .accordion-content{
@@ -176,6 +171,15 @@ border-radius:8px;
 margin-top:15px;
 }
 
+/* DECLARATION */
+
+.declaration{
+background:white;
+padding:25px;
+border-radius:10px;
+border:1px solid #ddd;
+}
+
 .hidden{
 display:none;
 }
@@ -186,26 +190,16 @@ display:none;
 
 <body>
 
-
-<!-- HEADER -->
-
 <div class="header">
 <div class="logo">
 <img src="01-My Refund-Logo_Main.png">
 </div>
 </div>
 
-
-<!-- HERO -->
-
 <div class="hero">
 <div class="hero-inner">
 
 <h1>Confirm your income details</h1>
-
-<p>
-Before we complete your tax return, please review the information below and confirm everything is correct.
-</p>
 
 <p><strong>Tax Year 2026</strong> (1 April 2025 – 31 March 2026)</p>
 
@@ -274,7 +268,6 @@ Before we complete your tax return, please review the information below and conf
 <input value="12-1234-123456-123">
 </div>
 
-
 <h2>Your IRD income information</h2>
 
 <p>Please review the income information we received from Inland Revenue.</p>
@@ -283,7 +276,17 @@ Before we complete your tax return, please review the information below and conf
 <iframe src="73000.pdf"></iframe>
 </div>
 
-<button class="button" onclick="nextPage()">Continue</button>
+
+<label style="margin-top:25px;display:block">
+
+<input type="checkbox" id="noOtherIncome">
+
+I have received no other income other than what is shown above.
+
+</label>
+
+
+<button class="button" onclick="continueFromPage1()">Continue</button>
 
 </div>
 
@@ -297,10 +300,6 @@ Before we complete your tax return, please review the information below and conf
 
 <div class="notice">
 
-<strong>Before you continue</strong>
-
-<br><br>
-
 Tick any sections that apply to you for the <strong>2026 tax year</strong>.
 
 <br><br>
@@ -309,91 +308,60 @@ Some questions may already be pre-selected based on your previous information. P
 
 </div>
 
-
-
 <div class="accordion">
 
-
-<!-- ADDITIONAL INCOME -->
 
 <div class="accordion-item">
 <div class="accordion-header">Additional income</div>
 <div class="accordion-content">
 
 <div class="checkbox-grid">
-
 <label><input type="checkbox"> Self employed</label>
 <label><input type="checkbox"> Partnership business income</label>
-
 <label><input type="checkbox"> Company profit / loss</label>
 <label><input type="checkbox"> Shareholder income</label>
-
 <label><input type="checkbox"> Rental income</label>
 <label><input type="checkbox"> Trust income</label>
-
 <label><input type="checkbox"> Untaxed income</label>
 <label><input type="checkbox"> Overseas income</label>
-
-<label><input type="checkbox"> Foreign superannuation / pension scheme</label>
+<label><input type="checkbox"> Foreign superannuation</label>
 <label><input type="checkbox"> Other income</label>
-
 </div>
 
 </div>
 </div>
 
-
-
-<!-- INVESTMENT INCOME -->
 
 <div class="accordion-item">
 <div class="accordion-header">Dividends / Interest</div>
 <div class="accordion-content">
 
 <div class="checkbox-grid">
-
 <label><input type="checkbox"> Dividends</label>
 <label><input type="checkbox"> Entrust dividends</label>
-
 <label><input type="checkbox"> Interest</label>
 <label><input type="checkbox"> Māori Authority distribution</label>
-
 <label><input type="checkbox"> Was that over $200?</label>
-
 </div>
 
 </div>
 </div>
 
-
-
-<!-- WORKING FOR FAMILIES -->
 
 <div class="accordion-item">
 <div class="accordion-header">Working for Families</div>
 <div class="accordion-content">
 
 <select>
-
 <option>None of the above</option>
 <option>I receive payments and have a partner</option>
 <option>I receive payments and DO NOT have a partner</option>
 <option>My partner receives payments</option>
-
 </select>
 
-<p style="font-size:14px">
-
-If you have or had a partner during the financial year, IRD requires your partner to file their tax return before your Working for Families entitlement can be assessed.
-
-</p>
-
 </div>
 </div>
 
-
-
-<!-- DONATIONS -->
 
 <div class="accordion-item">
 <div class="accordion-header">Charitable donations</div>
@@ -405,42 +373,24 @@ I give My Refund permission to create a REB tax type at IR to process your donat
 </label>
 
 <div class="upload-box">
-
-<p style="font-size:14px">
-Upload your donation receipts (PDF, JPG, PNG – max 10MB)
-</p>
-
 <button class="button">Upload files</button>
-
 </div>
 
 </div>
 </div>
 
-
-
-<!-- ACCOUNTANT FEES -->
 
 <div class="accordion-item">
 <div class="accordion-header">Accountant / Tax agent fees</div>
 <div class="accordion-content">
 
-<p style="font-size:14px">
-If you have previously used My Refund Limited's services, we automatically include our fees in your return.
-</p>
-
 <div class="upload-box">
-
 <button class="button">Upload files</button>
-
 </div>
 
 </div>
 </div>
 
-
-
-<!-- PROPERTY -->
 
 <div class="accordion-item">
 <div class="accordion-header">Residential property</div>
@@ -467,41 +417,27 @@ If you have previously used My Refund Limited's services, we automatically inclu
 </div>
 
 
-
-<!-- INSURANCE -->
-
 <div class="accordion-item">
 <div class="accordion-header">Income protection insurance</div>
 <div class="accordion-content">
 
 <div class="upload-box">
-
-<p style="font-size:14px">
-Upload proof of income protection or disability insurance premiums.
-</p>
-
 <button class="button">Upload files</button>
-
 </div>
 
 </div>
 </div>
 
-
-
-<!-- OVERSEAS -->
 
 <div class="accordion-item">
 <div class="accordion-header">Overseas travel</div>
 <div class="accordion-content">
 
 <select>
-
 <option>None of the above</option>
 <option>I arrived in New Zealand</option>
 <option>I temporarily left New Zealand</option>
 <option>I left New Zealand</option>
-
 </select>
 
 <div class="row">
@@ -522,29 +458,74 @@ Upload proof of income protection or disability insurance premiums.
 </div>
 
 
-
-<!-- SCHEDULAR -->
-
 <div class="accordion-item">
 <div class="accordion-header">Schedular expenses</div>
 <div class="accordion-content">
 
 <div class="upload-box">
-
-<p style="font-size:14px">
-Upload proof of expenses such as materials, tools, vehicle costs or insurance.
-</p>
-
 <button class="button">Upload files</button>
-
 </div>
 
 </div>
 </div>
 
+</div>
 
+<button class="button" onclick="nextPage(2)">Continue</button>
 
 </div>
+
+
+
+<!-- PAGE 3 -->
+
+<div class="section hidden" id="page3">
+
+<h2>Declaration</h2>
+
+<div class="declaration">
+
+<p>I declare that the below statements are true and correct:</p>
+
+<ul>
+
+<li>I have reviewed the earnings information including employer name and PAYE</li>
+
+<li>I have reviewed any investment income listed</li>
+
+<li>I have advised My Refund Ltd of any additional income or expenses not shown</li>
+
+<li>My Refund Ltd may sign and file tax returns on my behalf</li>
+
+<li>I will pay any tax owing to IRD by the due date</li>
+
+<li>I confirm all information provided is correct</li>
+
+<li>I agree to the <a href="#">terms and conditions</a></li>
+
+</ul>
+
+<label>
+
+<input type="checkbox">
+
+Ticking this acknowledges you agree with the declaration and constitutes an electronic signature
+
+</label>
+
+<br><br>
+
+<label>
+
+<input type="checkbox">
+
+I confirm the contact details recorded for me are correct
+
+</label>
+
+</div>
+
+<button class="button">Submit confirmation</button>
 
 </div>
 
@@ -552,28 +533,49 @@ Upload proof of expenses such as materials, tools, vehicle costs or insurance.
 
 <script>
 
-function nextPage(){
+/* PAGE NAVIGATION */
 
-document.getElementById("page1").classList.add("hidden");
-document.getElementById("page2").classList.remove("hidden");
+function continueFromPage1(){
+
+if(document.getElementById("noOtherIncome").checked){
+
+nextPage(1,3);
+
+}else{
+
+nextPage(1,2);
+
+}
+
+}
+
+function nextPage(current,next){
+
+document.getElementById("page"+current).classList.add("hidden");
+document.getElementById("page"+next).classList.remove("hidden");
 
 window.scrollTo(0,0);
 
 }
 
-/* accordion */
+/* ACCORDION */
 
-document.querySelectorAll(".accordion-header").forEach(header => {
+document.querySelectorAll(".accordion-header").forEach(header=>{
 
-header.addEventListener("click", function(){
+header.addEventListener("click",function(){
 
-let content = this.nextElementSibling;
+let content=this.nextElementSibling;
+let open=content.style.display==="block";
 
-document.querySelectorAll(".accordion-content").forEach(c=>{
-if(c!==content) c.style.display="none";
-});
+document.querySelectorAll(".accordion-content").forEach(c=>c.style.display="none");
+document.querySelectorAll(".accordion-header").forEach(h=>h.classList.remove("active"));
 
-content.style.display = content.style.display === "block" ? "none" : "block";
+if(!open){
+
+content.style.display="block";
+this.classList.add("active");
+
+}
 
 });
 
