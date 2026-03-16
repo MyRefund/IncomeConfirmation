@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>My Refund – Confirm Income Details</title>
+<title>My Refund – Income Confirmation</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -61,10 +61,14 @@ margin:auto;
 padding:60px 20px;
 }
 
+h2{
+margin-top:40px;
+}
+
 /* FORM */
 
 .field{
-margin-bottom:20px;
+margin-bottom:18px;
 }
 
 .field label{
@@ -73,7 +77,7 @@ font-weight:500;
 margin-bottom:6px;
 }
 
-.field input{
+.field input, select{
 width:100%;
 padding:12px;
 border-radius:6px;
@@ -90,16 +94,29 @@ gap:15px;
 flex:1;
 }
 
-/* BANK */
+/* CHECKBOX GRID */
 
-.bank-row{
+.checkbox-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:10px;
+}
+
+.checkbox-grid label{
 display:flex;
+align-items:center;
 gap:10px;
 }
 
-.bank-row input{
-flex:1;
-text-align:center;
+/* FILE UPLOAD */
+
+.upload-box{
+background:#ECFDF5;
+border:2px dashed #BBF7D0;
+padding:25px;
+border-radius:10px;
+margin-top:15px;
 }
 
 /* PDF */
@@ -134,9 +151,18 @@ margin-top:30px;
 background:#028a39;
 }
 
-.taxyear{
-margin-top:30px;
-font-weight:500;
+/* NOTICE */
+
+.notice{
+background:#ECFDF5;
+border-left:5px solid #03953F;
+padding:20px;
+border-radius:8px;
+margin-bottom:25px;
+}
+
+.hidden{
+display:none;
 }
 
 </style>
@@ -149,18 +175,15 @@ font-weight:500;
 <!-- HEADER -->
 
 <div class="header">
-
 <div class="logo">
 <img src="01-My Refund-Logo_Main.png">
 </div>
-
 </div>
 
 
 <!-- HERO -->
 
 <div class="hero">
-
 <div class="hero-inner">
 
 <h1>Confirm your income details</h1>
@@ -169,141 +192,303 @@ font-weight:500;
 Before we complete your tax return, please review the information below and confirm everything is correct.
 </p>
 
-<div class="taxyear">
-
-Tax Year: <strong>2026</strong>  
-(1 April 2025 – 31 March 2026)
+<p><strong>Tax Year 2026</strong> (1 April 2025 – 31 March 2026)</p>
 
 </div>
-
-</div>
-
 </div>
 
 
-<!-- DETAILS SECTION -->
 
-<div class="section">
+<!-- PAGE 1 -->
+
+<div class="section" id="page1">
 
 <h2>Your details</h2>
 
-<!-- NAME (LOCKED) -->
-
 <div class="field">
-
 <label>Name</label>
-
 <input value="Drew Biggart" disabled>
-
 </div>
-
-
-<!-- ADDRESS -->
 
 <h3>Address</h3>
 
 <div class="field">
-
-<label>Street address</label>
-
+<label>Street Address</label>
 <input placeholder="25 Churchill Street">
-
 </div>
 
 <div class="row">
 
 <div class="field">
-
 <label>Suburb</label>
-
 <input placeholder="Christchurch Central">
-
 </div>
 
 <div class="field">
-
 <label>City</label>
-
 <input placeholder="Christchurch">
-
 </div>
 
 <div class="field">
-
 <label>Postcode</label>
-
 <input placeholder="8011">
-
 </div>
 
 </div>
-
-
-<!-- CONTACT -->
 
 <h3>Contact details</h3>
 
 <div class="field">
-
 <label>Contact number</label>
-
 <input value="0800 80 89 89">
-
 </div>
 
 <div class="field">
-
 <label>Email</label>
-
 <input value="drew@myrefund.co.nz">
-
 </div>
-
-
-<!-- BANK DETAILS -->
 
 <h3>Bank details</h3>
 
 <div class="field">
-
 <label>Account holder name</label>
-
 <input value="D Biggart">
-
 </div>
 
 <div class="field">
-
 <label>Bank account number</label>
-
 <input value="12-1234-123456-123">
-
 </div>
 
 
-<!-- PDF -->
+<h2>Your IRD income information</h2>
 
-<h2 style="margin-top:50px">Your IRD income information</h2>
-
-<p>
-Please review the income information we received from Inland Revenue.
-</p>
+<p>Please review the income information we received from Inland Revenue.</p>
 
 <div class="pdf-box">
-
 <iframe src="73000.pdf"></iframe>
+</div>
+
+<button class="button" onclick="nextPage()">Continue</button>
 
 </div>
 
 
-<button class="button">
 
-Continue
+<!-- PAGE 2 -->
 
-</button>
+<div class="section hidden" id="page2">
+
+<h2>Other information for your tax return</h2>
+
+<div class="notice">
+
+<strong>Please review carefully</strong>
+
+<br><br>
+
+Tick any options that apply to you for this tax year.
+
+<br><br>
+
+Some questions may already be pre-selected based on your previous information. Please review carefully and untick any that do not apply to the tax year.
+
+</div>
+
+
+
+<h2>Additional income</h2>
+
+<div class="checkbox-grid">
+
+<label><input type="checkbox"> Self employed</label>
+<label><input type="checkbox"> Partnership business income</label>
+
+<label><input type="checkbox"> Company profit / loss</label>
+<label><input type="checkbox"> Shareholder income</label>
+
+<label><input type="checkbox"> Rental income</label>
+<label><input type="checkbox"> Trust income</label>
+
+<label><input type="checkbox"> Untaxed income</label>
+<label><input type="checkbox"> Overseas income</label>
+
+<label><input type="checkbox"> Foreign superannuation / pension scheme</label>
+<label><input type="checkbox"> Other income</label>
+
+</div>
+
+
+
+<h2>Dividends / Interest</h2>
+
+<div class="checkbox-grid">
+
+<label><input type="checkbox"> Dividends</label>
+<label><input type="checkbox"> Entrust dividends</label>
+
+<label><input type="checkbox"> Interest</label>
+<label><input type="checkbox"> Māori Authority distribution</label>
+
+<label><input type="checkbox"> Was that over $200?</label>
+
+</div>
+
+
+
+<h2>Working for Families</h2>
+
+<select>
+
+<option>None of the above</option>
+<option>I receive payments and have a partner</option>
+<option>I receive payments and DO NOT have a partner</option>
+<option>My partner receives payments</option>
+
+</select>
+
+<p style="font-size:14px">
+
+If you have or had a partner during the financial year, IRD requires your partner to file their tax return before your Working for Families entitlement can be assessed. This may delay processing of your return.
+
+</p>
+
+
+
+<h2>Charitable donations</h2>
+
+<label>
+<input type="checkbox">
+I give My Refund permission to create a REB tax type at IR to process your donation tax credits
+</label>
+
+<div class="upload-box">
+
+<strong>Donation receipts</strong>
+
+<p style="font-size:14px">
+
+Upload your donation receipts. Maximum file size 10MB. Allowed file types: PDF, JPG, PNG.
+
+</p>
+
+<button class="button">Upload files</button>
+
+</div>
+
+
+
+<h2>Accountant / Tax agent fees</h2>
+
+<p style="font-size:14px">
+
+If you have previously used My Refund Limited's services, we will automatically include any fees charged to you.
+
+</p>
+
+<div class="upload-box">
+
+<button class="button">Upload files</button>
+
+</div>
+
+
+
+<h2>Residential property</h2>
+
+<div class="row">
+
+<div class="field">
+<label>Date purchased</label>
+<input type="date">
+</div>
+
+<div class="field">
+<label>Date sold</label>
+<input type="date">
+</div>
+
+</div>
+
+<label><input type="checkbox"> Was this your main home?</label>
+<label><input type="checkbox"> Was this a new build?</label>
+
+
+
+<h2>Income protection insurance</h2>
+
+<div class="upload-box">
+
+<p style="font-size:14px">
+
+Upload proof of income protection or disability insurance premiums.
+
+</p>
+
+<button class="button">Upload files</button>
+
+</div>
+
+
+
+<h2>Overseas travel</h2>
+
+<select>
+
+<option>None of the above</option>
+<option>I arrived in New Zealand</option>
+<option>I temporarily left New Zealand</option>
+<option>I left New Zealand</option>
+
+</select>
+
+<div class="row">
+
+<div class="field">
+<label>Arrival date</label>
+<input type="date">
+</div>
+
+<div class="field">
+<label>Leaving date</label>
+<input type="date">
+</div>
+
+</div>
+
+
+
+<h2>Schedular expenses</h2>
+
+<div class="upload-box">
+
+<p style="font-size:14px">
+
+Upload proof of schedular expenses such as tools, equipment, materials, or vehicle expenses.
+
+</p>
+
+<button class="button">Upload files</button>
+
+</div>
 
 
 </div>
+
+
+
+<script>
+
+function nextPage(){
+
+document.getElementById("page1").classList.add("hidden");
+document.getElementById("page2").classList.remove("hidden");
+
+window.scrollTo(0,0);
+
+}
+
+</script>
 
 </body>
 </html>
