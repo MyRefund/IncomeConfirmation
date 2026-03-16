@@ -98,7 +98,7 @@ height:600px;
 border:none;
 }
 
-/* BUTTON */
+/* BUTTONS */
 
 .button{
 background:#03953F;
@@ -108,11 +108,25 @@ border-radius:30px;
 border:none;
 font-size:15px;
 cursor:pointer;
-margin-top:30px;
 }
 
 .button:hover{
 background:#028a39;
+}
+
+.button-secondary{
+background:#ddd;
+color:#333;
+padding:14px 34px;
+border-radius:30px;
+border:none;
+font-size:15px;
+cursor:pointer;
+margin-right:10px;
+}
+
+.button-row{
+margin-top:30px;
 }
 
 /* NOTICE */
@@ -226,22 +240,18 @@ display:none;
 </div>
 
 <div class="row">
-
 <div class="field">
 <label>Suburb</label>
 <input placeholder="Christchurch Central">
 </div>
-
 <div class="field">
 <label>City</label>
 <input placeholder="Christchurch">
 </div>
-
 <div class="field">
 <label>Postcode</label>
 <input placeholder="8011">
 </div>
-
 </div>
 
 <h3>Contact details</h3>
@@ -276,7 +286,6 @@ display:none;
 <iframe src="73000.pdf"></iframe>
 </div>
 
-
 <label style="margin-top:25px;display:block">
 
 <input type="checkbox" id="noOtherIncome">
@@ -285,8 +294,9 @@ I have received no other income other than what is shown above.
 
 </label>
 
-
+<div class="button-row">
 <button class="button" onclick="continueFromPage1()">Continue</button>
+</div>
 
 </div>
 
@@ -310,7 +320,6 @@ Some questions may already be pre-selected based on your previous information. P
 
 <div class="accordion">
 
-
 <div class="accordion-item">
 <div class="accordion-header">Additional income</div>
 <div class="accordion-content">
@@ -331,147 +340,15 @@ Some questions may already be pre-selected based on your previous information. P
 </div>
 </div>
 
-
-<div class="accordion-item">
-<div class="accordion-header">Dividends / Interest</div>
-<div class="accordion-content">
-
-<div class="checkbox-grid">
-<label><input type="checkbox"> Dividends</label>
-<label><input type="checkbox"> Entrust dividends</label>
-<label><input type="checkbox"> Interest</label>
-<label><input type="checkbox"> Māori Authority distribution</label>
-<label><input type="checkbox"> Was that over $200?</label>
 </div>
 
-</div>
-</div>
+<div class="button-row">
 
-
-<div class="accordion-item">
-<div class="accordion-header">Working for Families</div>
-<div class="accordion-content">
-
-<select>
-<option>None of the above</option>
-<option>I receive payments and have a partner</option>
-<option>I receive payments and DO NOT have a partner</option>
-<option>My partner receives payments</option>
-</select>
-
-</div>
-</div>
-
-
-<div class="accordion-item">
-<div class="accordion-header">Charitable donations</div>
-<div class="accordion-content">
-
-<label>
-<input type="checkbox">
-I give My Refund permission to create a REB tax type at IR to process your donation tax credits
-</label>
-
-<div class="upload-box">
-<button class="button">Upload files</button>
-</div>
-
-</div>
-</div>
-
-
-<div class="accordion-item">
-<div class="accordion-header">Accountant / Tax agent fees</div>
-<div class="accordion-content">
-
-<div class="upload-box">
-<button class="button">Upload files</button>
-</div>
-
-</div>
-</div>
-
-
-<div class="accordion-item">
-<div class="accordion-header">Residential property</div>
-<div class="accordion-content">
-
-<div class="row">
-
-<div class="field">
-<label>Date purchased</label>
-<input type="date">
-</div>
-
-<div class="field">
-<label>Date sold</label>
-<input type="date">
-</div>
-
-</div>
-
-<label><input type="checkbox"> Was this your main home?</label><br>
-<label><input type="checkbox"> Was this a new build?</label>
-
-</div>
-</div>
-
-
-<div class="accordion-item">
-<div class="accordion-header">Income protection insurance</div>
-<div class="accordion-content">
-
-<div class="upload-box">
-<button class="button">Upload files</button>
-</div>
-
-</div>
-</div>
-
-
-<div class="accordion-item">
-<div class="accordion-header">Overseas travel</div>
-<div class="accordion-content">
-
-<select>
-<option>None of the above</option>
-<option>I arrived in New Zealand</option>
-<option>I temporarily left New Zealand</option>
-<option>I left New Zealand</option>
-</select>
-
-<div class="row">
-
-<div class="field">
-<label>Arrival date</label>
-<input type="date">
-</div>
-
-<div class="field">
-<label>Leaving date</label>
-<input type="date">
-</div>
-
-</div>
-
-</div>
-</div>
-
-
-<div class="accordion-item">
-<div class="accordion-header">Schedular expenses</div>
-<div class="accordion-content">
-
-<div class="upload-box">
-<button class="button">Upload files</button>
-</div>
-
-</div>
-</div>
-
-</div>
+<button class="button-secondary" onclick="goToPage(1)">Back</button>
 
 <button class="button" onclick="nextPage(2)">Continue</button>
+
+</div>
 
 </div>
 
@@ -490,17 +367,11 @@ I give My Refund permission to create a REB tax type at IR to process your donat
 <ul>
 
 <li>I have reviewed the earnings information including employer name and PAYE</li>
-
 <li>I have reviewed any investment income listed</li>
-
 <li>I have advised My Refund Ltd of any additional income or expenses not shown</li>
-
 <li>My Refund Ltd may sign and file tax returns on my behalf</li>
-
 <li>I will pay any tax owing to IRD by the due date</li>
-
 <li>I confirm all information provided is correct</li>
-
 <li>I agree to the <a href="#">terms and conditions</a></li>
 
 </ul>
@@ -525,7 +396,13 @@ I confirm the contact details recorded for me are correct
 
 </div>
 
+<div class="button-row">
+
+<button class="button-secondary" onclick="backFromPage3()">Back</button>
+
 <button class="button">Submit confirmation</button>
+
+</div>
 
 </div>
 
@@ -533,32 +410,57 @@ I confirm the contact details recorded for me are correct
 
 <script>
 
-/* PAGE NAVIGATION */
+let skippedPage2 = false;
 
 function continueFromPage1(){
 
 if(document.getElementById("noOtherIncome").checked){
 
-nextPage(1,3);
+skippedPage2 = true;
+goToPage(3);
 
 }else{
 
-nextPage(1,2);
+skippedPage2 = false;
+goToPage(2);
 
 }
 
 }
 
-function nextPage(current,next){
+function goToPage(page){
 
-document.getElementById("page"+current).classList.add("hidden");
-document.getElementById("page"+next).classList.remove("hidden");
+document.querySelectorAll(".section").forEach(p=>{
+p.classList.add("hidden");
+});
+
+document.getElementById("page"+page).classList.remove("hidden");
 
 window.scrollTo(0,0);
 
 }
 
-/* ACCORDION */
+function nextPage(current){
+
+goToPage(current+1);
+
+}
+
+function backFromPage3(){
+
+if(skippedPage2){
+
+goToPage(1);
+
+}else{
+
+goToPage(2);
+
+}
+
+}
+
+/* accordion */
 
 document.querySelectorAll(".accordion-header").forEach(header=>{
 
